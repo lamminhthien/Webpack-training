@@ -1,0 +1,10 @@
+.main-menu {
+  background-color: #429390;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color:#b6bf4e;
+    }
+  }
+}
