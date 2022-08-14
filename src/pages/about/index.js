@@ -1,12 +1,12 @@
-import "bootstrap";
-import "bootstrap/scss/bootstrap.scss";
-import "../../partials/main-menu";
+import 'bootstrap/scss/bootstrap';
 
-import "./style.scss";
+import 'Partials/main-menu';
+
+import './style';
 
 class PageAbout {
   constructor() {
-    console.log("Page:: About");
+    console.log('Page:: About');
   }
 }
 

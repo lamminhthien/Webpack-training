@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Home</title>
   </head>
-  <body class="page-contact">
-    <h1>Contact</h1>
-    <button class="btn btn-primary btn-load-chart">Load Chart</button>
-    <canvas id="myChart"></canvas>
-    <h1>This below is react app</h1>
-    <div id="react-app"></div>
+  <body class="page-home">
+    {% include 'src/partials/main-menu/view.njk' %}
+    <div class="container">
+      <h1>Home page</h1>
+      <img src="images/github.png" alt="Github">
+      <br>
+      <button class="btn btn-primary btn-load-react-app mt-5">Load React App</button>
+      <div id="react-app" class="mt-2 border p-2"></div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,14 @@
+.comp-main-menu{
+  background-color: #b3368b;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 5px 10px;
+  }
+  a{
+    text-decoration: none;
+    color: white;
+  }
+}

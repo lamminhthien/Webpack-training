@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "How To Use Multithreading in Node.js",
+      "author": "Tin Tran",
+      "description": "Node.js runs JavaScript code in a single thread, which means that your code can only do one task at a time. However, Node.js itself is multithreaded and provides hidden threads through the libuv library, which handles I/O operations like reading files from a disk or network requests. Through the use of hidden threads, Node.js provides asynchronous methods that allow your code to make I/O requests without blocking the main thread."
+    },
+    {
+      "id": 2,
+      "title": "From Side Project to Startup",
+      "author": "Huy Ngo",
+      "description": "Looking back in time and seeing a year has passed, building a product from scratch is overwhelming. Too many thoughts, learnings, wins, and failures but a journey worth cherishing. On this note, and without boring you much, gonna straight jump to the topic of discussion"
+    },
+    {
+      "id": 3,
+      "title": "Javascript to know for Reactjs",
+      "author": "Thien Lam",
+      "description": "Learning React js should not be that difficult if you're already comfortable with some concepts in Javascript. One of the interesting things about using reactjs is, it sharpens your javascript skills, but hey before you decide to give react js a try, do make sure to understand these javascripts concepts."
+    }
+  ]
+}

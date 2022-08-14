@@ -1,8 +1,8 @@
-import "./style.scss";
+import './style.scss';
 
 class PartialMainMenu {
   constructor() {
-    console.log("Partial:: Main Menu");
+    console.log('Partial:: Main Menu');
   }
 }
 

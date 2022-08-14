@@ -1,56 +1,27 @@
-import "bootstrap";
-import "bootstrap/scss/bootstrap.scss";
+import 'bootstrap/scss/bootstrap';
 
-import "./style.scss";
-import ReactApp from '../../my-app'
+import 'Partials/main-menu';
 
-class PageContact {
+import './style';
+
+class PageHome {
   constructor() {
-    console.log("Page:: Home");
-    ReactApp();
+    console.log('Page:: Home');
 
-    this.listeners();
+    this.btnLoadReactApp = document.querySelector('.btn-load-react-app');
+    this.btnLoadReactApp.addEventListener('click', this.initReactApp);
   }
 
-  listeners() {
-    this.btnLoadChart = document.querySelector(".btn-load-chart");
+  initReactApp() {
+    const myApp = import(
+      /* webpackChunkName: "bundle.my-app" */
+      '../../my-app'
+    );
 
-    this.btnLoadChart.addEventListener("click", () => {
-      this.loadChart();
-    });
-  }
-
-  async loadChart() {
-    const chartJs = import(/* webpackChunkName: "vendor.chartjs" */ "chart.js");
-
-    // Sau khi tải xong thư viện chart.js sẽ vẽ chart
-    Promise.all([chartJs]).then((module) => {
-      console.log("ChartJs Loaded");
-
-      const Chart = module[0].Chart;
-      Chart.register(...module[0].registerables);
-
-      const ctx = document.getElementById("myChart").getContext("2d");
-      new Chart(ctx, {
-        type: "doughnut",
-        data: {
-          labels: ["Red", "Blue", "Yellow"],
-          datasets: [
-            {
-              label: "My First Dataset",
-              data: [300, 50, 100],
-              backgroundColor: [
-                "rgb(255, 99, 132)",
-                "rgb(54, 162, 235)",
-                "rgb(255, 205, 86)",
-              ],
-              hoverOffset: 4,
-            },
-          ],
-        },
-      });
+    Promise.all([myApp]).then(() => {
+      console.log('React App Loaded');
     });
   }
 }
 
-new PageContact();
+new PageHome();

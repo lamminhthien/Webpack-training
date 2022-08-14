@@ -1,111 +1,77 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-  target: "web",
-  mode: "development",
+  target: 'web',
+  mode: 'development',
   entry: {
     home: './src/pages/home/index.js',
     about: './src/pages/about/index.js',
     contact: './src/pages/contact/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'scripts/[name].js'
+    path: path.resolve(__dirname, 'dist'), // Kết quả sẽ được xuất ra thư mục này.
+    filename: 'scripts/[name].js' // Bạn hãy nhìn lên entry. Dòng code này sẽ tạo ra các file js tương ứng theo tên cho từng trang.
   },
   module: {
     rules: [
       {
         test: /\.njk$/,
         use: {
-          loader: "simple-nunjucks-loader",
-          options: {},
-        },
+          loader: 'simple-nunjucks-loader',
+          options: {}
+        }
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               url: false,
               sourceMap: true,
-              importLoaders: 1,
-            },
+              importLoaders: 1
+            }
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
-              sourceMap: true,
-            },
-          },
-        ],
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
-        test: /\.m?js$/,
+        test: /\.(m?jsx?)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
-      },
-      {
-        test: /\.(png|jpe?g|gif,svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]'
+          loader: 'babel-loader'
         }
       },
       {
-        test: /\.(woff|woff2|ttf)$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[name][ext]'
-        }
-      },
-      {
-        test: /\.(mp3|ogg|mp4|webm|vtt)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'media/[name][ext]'
-        }
-      },
-    {
-      test: /\.m?js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: "babel-loader",
-        options: {
-          presets: ["@babel/preset-env", "@babel/preset-typescript", "@babel/preset-react"],
-        }
+        test: /\.(ts|tsx)?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
       }
-    },
-    {
-      test: /\.(ts|tsx)?$/,
-      use: 'ts-loader',
-      exclude: /node_modules/
-    },
-    ],
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/pages/home/view.njk',
       filename: 'index.html',
-      chunks: ['home']
+      chunks: ['home'] // Bạn hãy nhìn lên entry. Dòng code này có nghĩa là nó sẽ nhúng chỉ chèn script của home vào trang home. Trang about, contact hoạt động tương tự.
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/about/view.njk',
@@ -118,8 +84,8 @@ module.exports = {
       chunks: ['contact']
     }),
     new MiniCssExtractPlugin({
-      filename: 'style/[name].css',
-      chunkFilename: '[id].css',
+      filename: 'styles/[name].css', // Dòng code này sẽ tạo ra các file css tương ứng cho từng trang.
+      chunkFilename: 'styles/[id].css',
       ignoreOrder: false
     }),
     new CopyPlugin({
@@ -140,39 +106,35 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"],
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: {
-      Scripts: path.resolve(__dirname, "src/scripts/"),
-      Layouts: path.resolve(__dirname, "src/layouts/"),
-      Pages: path.resolve(__dirname, "src/pages/"),
-      Styles: path.resolve(__dirname, "src/styles/"),
-      Partials: path.resolve(__dirname, "src/partials/"),
-      Vendors: path.resolve(__dirname, "src/vendors/"),
-      Assets: path.resolve(__dirname, "src/assets/"),
-      "@": path.resolve(__dirname, "src"),
-    },
+      Pages: path.resolve(__dirname, 'src/pages/'),
+      Partials: path.resolve(__dirname, 'src/partials/'),
+      Vendors: path.resolve(__dirname, 'src/vendors/'),
+      Assets: path.resolve(__dirname, 'src/assets/'),
+      '@': path.resolve(__dirname, 'src/')
+    }
   },
   optimization: {
     splitChunks: {
-      chunks: "initial",
+      chunks: 'initial',
       minSize: 0,
       cacheGroups: {
         vendor: {
-          // Những thư viện đến từ thư mục /node_modules/ hoặc /vendors/ sẽ được gom thành vendor.js
           test: /[\\/]node_modules[\\/]|[\\/]vendors[\\/]/,
-          name: "vendor",
+          name: 'vendor',
           minChunks: 1,
           priority: -10,
-          reuseExistingChunk: true,
+          reuseExistingChunk: true
         },
         common: {
-          name: "common",
-          minChunks: 2, // Những file được nhúng và sử dụng ở ít nhất 2 nơi thì sẽ gom thành common.js
+          name: 'common',
+          minChunks: 2,
           priority: -20,
-          reuseExistingChunk: true,
+          reuseExistingChunk: true
         }
       }
     }
-  },
+  }
 };
