@@ -18,5 +18,10 @@
       "author": "Thien Lam",
       "description": "Learning React js should not be that difficult if you're already comfortable with some concepts in Javascript. One of the interesting things about using reactjs is, it sharpens your javascript skills, but hey before you decide to give react js a try, do make sure to understand these javascripts concepts."
     }
+  ],
+  "accorditions": [
+    {"id": 0, "content": "This is content for 0", "title": "This is title 0"},
+    {"id": 1, "content": "This is content for 1", "title": "This is title 1"},
+    {"id": 2, "content": "This is content for 2", "title": "This is title 2"}
   ]
 }

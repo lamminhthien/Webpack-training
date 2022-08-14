@@ -9,6 +9,7 @@ import BlogDetail from '@/my-app/pages/blog/detail';
 import MainMenu from '@/my-app/components/menu';
 import ToTop from '@/my-app/components/to-top';
 import Accordion from './components/accordion';
+import { IAcordition } from './interfaces/accordition';
 
 const App: React.FC = () => {
   return (
