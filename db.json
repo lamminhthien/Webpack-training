@@ -20,8 +20,16 @@
     }
   ],
   "accorditions": [
-    {"id": 0, "content": "This is content for 0", "title": "This is title 0"},
-    {"id": 1, "content": "This is content for 1", "title": "This is title 1"},
-    {"id": 2, "content": "This is content for 2", "title": "This is title 2"}
+    {
+      "id": 0,
+      "title": "Call of the Night",
+      "content": "Yofukashi no Uta là một bộ manga Nhật Bản được viết và minh họa bởi Kotoyama. Bộ truyện đã được đăng dài kỳ trên tạp chí manga Weekly Shōnen Sunday của nhà xuất bản Shogakukan từ tháng 8 năm 2019. Ở Bắc Mỹ, bộ truyện được xuất bản tiếng Anh bởi Viz Media."
+    },
+    {
+      "id": 1,
+      "title": "Rent a Girlfriend Season 2",
+      "content": "Một thằng Zin tên là Kazuya 19 năm mới có bồ không bao lâu thì bị đá, thế là cậu ta phải sử dụng dịch vụ Hẹn hò Thuê, cứ trả tiền là ngày đó bạn sẽ có bạn gái ngay! Cậu ta đã thuê Mizuhara làm bạn gái mình, cô nàng thì cứ công việc (méo có yêu thương gì đâu) mà thả thính, còn chàng ta thì đớp thính vô tội vạ, cho đến khi… Đến khi Kazuya bớt sống ảo, cậu ta ngưng đớp thính và tự sẽ kiếm bạn gái thật cho mình thì mới hớ ra Mizuhara học cùng trường với mình, câu chuyện tình dở khóc dở cười này sẽ ra sao đây?"
+    },
+    {"id": 2, "title": "Lycoris Recoil", "content": "Câu chuyện lấy bối cảnh ở Lyco-Reco một quán cà phê kiểu Nhật ở khu trung tâm cổ kính của Tokyo. Quán cà phê nhận đặt hàng bất cứ thứ gì, từ cà phê ngon đến đồ ngọt... Bất kể bạn gọi món gì, chúng tôi sẽ phục vụ tận nơi...!"}
   ]
 }

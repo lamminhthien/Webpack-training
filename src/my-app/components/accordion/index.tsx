@@ -4,7 +4,6 @@ import './style.scss';
 
 import * as AccorditionApi from '@/my-app/api/network/accordition';
 
-
 const Accordion = () => {
   const [accorditions, setAccorditions] = React.useState<IAcordition[]>([]);
 
@@ -13,29 +12,32 @@ const Accordion = () => {
       const accorditions = await AccorditionApi.find();
       setAccorditions(accorditions.data);
     })();
-  
-  },[]);
+  }, []);
 
   const showAccorditionContent = (id: number) => {
-    // Get accorditionContentElm
-    var accorditionContentElm = document
-      .getElementById(`${id}`)
-      .querySelector('.accordition-content');
+    var accorElm = document.getElementById(`accor-${id}`);
+    var accorContentElm = accorElm.querySelector('.accordition-content');
     var isOpen =
-      accorditionContentElm.classList.contains('d-none') === true
-        ? false
-        : true;
+      accorContentElm.classList.contains('d-none') === true ? false : true;
 
     // Show content
-    if (!isOpen) accorditionContentElm.classList.remove('d-none');
-    else accorditionContentElm.classList.add('d-none');
+    if (!isOpen) {
+      accorContentElm.classList.remove('d-none');
+      accorElm.classList.add('active');
+    } else {
+      accorContentElm.classList.add('d-none');
+      accorElm.classList.remove('active')
+    }
   };
 
   return (
     <div className="accordition">
       {accorditions.map(accordition => {
         return (
-          <div className="accordition-item" id={accordition.id.toString()}>
+          <div
+            className="accordition-item"
+            id={`accor-${accordition.id.toString()}`}
+          >
             <div
               className="accordition-title"
               onClick={() => showAccorditionContent(accordition.id)}
