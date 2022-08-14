@@ -14,7 +14,7 @@ const Accordion = () => {
     })();
   }, []);
 
-  const showAccorditionContent = (id: number) => {
+  const showAccordionContent = (id: number) => {
     var accorElm = document.getElementById(`accor-${id}`);
     var accorContentElm = accorElm.querySelector('.accordition-content');
     var isOpen =
@@ -24,9 +24,19 @@ const Accordion = () => {
     if (!isOpen) {
       accorContentElm.classList.remove('d-none');
       accorElm.classList.add('active');
+
+      // Unactive other content if it already open
+      var accorElms = document.querySelectorAll('.accordition-item');
+      accorElms.forEach(accorElm => {
+        var accorID = accorElm.getAttribute('id');
+        console.log(id);
+        if (accorID !== `accor-${id}`) {
+          accorElm.classList.remove('active');
+        }
+      });
     } else {
       accorContentElm.classList.add('d-none');
-      accorElm.classList.remove('active')
+      accorElm.classList.remove('active');
     }
   };
 
@@ -40,7 +50,7 @@ const Accordion = () => {
           >
             <div
               className="accordition-title"
-              onClick={() => showAccorditionContent(accordition.id)}
+              onClick={() => showAccordionContent(accordition.id)}
             >
               {accordition.title}
             </div>
