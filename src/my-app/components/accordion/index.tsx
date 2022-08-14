@@ -27,11 +27,12 @@ const Accordion = () => {
 
       // Unactive other content if it already open
       var accorElms = document.querySelectorAll('.accordition-item');
+
       accorElms.forEach(accorElm => {
         var accorID = accorElm.getAttribute('id');
-        console.log(id);
         if (accorID !== `accor-${id}`) {
           accorElm.classList.remove('active');
+          accorElm.querySelector('.accordition-content').classList.add('d-none')
         }
       });
     } else {
