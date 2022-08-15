@@ -10,13 +10,14 @@ import * as AccorditionApi from '@/my-app/api/network/accordition';
 
 const Accordion: React.FC<IProps> = ({data}) => {
   const [accorditions, setAccorditions] = React.useState<IAcordition[]>([]);
+  const accordionEl = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     setAccorditions(data)
   });
 
   const showAccordionContent = (id: number) => {
-    var accorElm = document.getElementById(`accor-${id}`);
+    var accorElm = accordionEl.current.querySelector(`#accor-${id}`);
     var accorContentElm = accorElm.querySelector('.accordition-content');
     var isOpen =
       accorContentElm.classList.contains('d-none') === true ? false : true;
@@ -43,7 +44,7 @@ const Accordion: React.FC<IProps> = ({data}) => {
   };
 
   return (
-    <div className="accordition">
+    <div className="accordition" ref={accordionEl}>
       {accorditions.map(accordition => {
         return (
           <div
