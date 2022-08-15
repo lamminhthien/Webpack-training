@@ -12,11 +12,16 @@ import Accordion from './components/accordion';
 import { IAcordition } from './interfaces/accordition';
 
 const App: React.FC = () => {
+  var accorditionArray: IAcordition[] = [
+    {id: 0, content: 'This is content for 0', title: 'This is title 0'},
+    {id: 1, content: 'This is content for 1', title: 'This is title 1'},
+    {id: 2, content: 'This is content for 2', title: 'This is title 2'}
+  ];
   return (
     <Router>
       <MainMenu />
       <ToTop />
-      <Accordion/>
+      <Accordion data={accorditionArray}/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />

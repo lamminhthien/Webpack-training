@@ -2,17 +2,18 @@ import * as React from 'react';
 import {IAcordition} from '@/my-app/interfaces/accordition';
 import './style.scss';
 
+interface IProps {
+  data: IAcordition[];
+}
+
 import * as AccorditionApi from '@/my-app/api/network/accordition';
 
-const Accordion = () => {
+const Accordion: React.FC<IProps> = ({data}) => {
   const [accorditions, setAccorditions] = React.useState<IAcordition[]>([]);
 
   React.useEffect(() => {
-    (async () => {
-      const accorditions = await AccorditionApi.find();
-      setAccorditions(accorditions.data);
-    })();
-  }, []);
+    setAccorditions(data)
+  });
 
   const showAccordionContent = (id: number) => {
     var accorElm = document.getElementById(`accor-${id}`);
