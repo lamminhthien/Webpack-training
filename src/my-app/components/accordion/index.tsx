@@ -23,7 +23,7 @@ const Accordion: React.FC<IProps> = ({data}) => {
     // Show content
     if (!isOpen) {
       accorContentElm.classList.remove('d-none');
-      accorElm.classList.add('active');
+      accorElm.querySelector('.accordition-title').classList.add('active');
 
       // Unactive other content if it already open
       var accorElms = accordionEl.current.querySelectorAll('.accordition-item');
@@ -31,7 +31,7 @@ const Accordion: React.FC<IProps> = ({data}) => {
       accorElms.forEach(accorElm => {
         var accorID = accorElm.getAttribute('id');
         if (accorID !== `accor-${id}`) {
-          accorElm.classList.remove('active');
+          accorElm.querySelector('.accordition-title').classList.remove('active');
           accorElm.querySelector('.accordition-content').classList.add('d-none')
         }
       });

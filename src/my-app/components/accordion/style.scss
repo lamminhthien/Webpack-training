@@ -9,7 +9,6 @@
   background-color: lightblue;
 }
 .accordition .accordition-item {
-  padding: 10px 40px;
   margin-bottom: 20px;
   cursor: pointer;
   border: 1px solid rgb(176, 175, 175);
@@ -17,6 +16,7 @@
 }
 
 .accordition .accordition-title {
+  padding: 10px 40px;
   font-size: 24px;
   font-weight: 500;
 }
