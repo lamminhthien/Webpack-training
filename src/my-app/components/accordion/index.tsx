@@ -17,13 +17,14 @@ const Accordion: React.FC<IProps> = ({data}) => {
   const showAccordionContent = (id: number) => {
     var accorElm = accordionEl.current.querySelector(`#accor-${id}`);
     var accorContentElm = accorElm.querySelector('.accordition-content');
+    var accorTitleElm = accorElm.querySelector('.accordition-title');
     var isOpen =
       accorContentElm.classList.contains('d-none') === true ? false : true;
 
     // Show content
     if (!isOpen) {
       accorContentElm.classList.remove('d-none');
-      accorElm.querySelector('.accordition-title').classList.add('active');
+      accorTitleElm.classList.add('active');
 
       // Unactive other content if it already open
       var accorElms = accordionEl.current.querySelectorAll('.accordition-item');
@@ -37,7 +38,7 @@ const Accordion: React.FC<IProps> = ({data}) => {
       });
     } else {
       accorContentElm.classList.add('d-none');
-      accorElm.querySelector('.accordition-title').classList.remove('active');
+      accorTitleElm.classList.remove('active');
     }
   };
 
