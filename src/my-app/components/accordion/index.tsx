@@ -37,7 +37,7 @@ const Accordion: React.FC<IProps> = ({data}) => {
       });
     } else {
       accorContentElm.classList.add('d-none');
-      accorElm.classList.remove('active');
+      accorElm.querySelector('.accordition-title').classList.remove('active');
     }
   };
 
