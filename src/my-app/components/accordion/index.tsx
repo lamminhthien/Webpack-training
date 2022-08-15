@@ -6,11 +6,9 @@ interface IProps {
   data: IAcordition[];
 }
 
-import * as AccorditionApi from '@/my-app/api/network/accordition';
-
 const Accordion: React.FC<IProps> = ({data}) => {
   const [accorditions, setAccorditions] = React.useState<IAcordition[]>([]);
-  const accordionEl = React.useRef<HTMLDivElement>(null);
+  const accordionEl = React.useRef<HTMLDivElement>();
 
   React.useEffect(() => {
     setAccorditions(data)
@@ -28,7 +26,7 @@ const Accordion: React.FC<IProps> = ({data}) => {
       accorElm.classList.add('active');
 
       // Unactive other content if it already open
-      var accorElms = document.querySelectorAll('.accordition-item');
+      var accorElms = accordionEl.current.querySelectorAll('.accordition-item');
 
       accorElms.forEach(accorElm => {
         var accorID = accorElm.getAttribute('id');
