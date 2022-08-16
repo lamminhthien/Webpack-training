@@ -1,30 +1,28 @@
-.tab {
+.accordition {
   padding: 20px 40px;
   margin: 15px;
   border: 1px solid rgb(176, 175, 175);
-  color: rgb(0, 162, 255);
   border-radius: 4px;
-  display: flex;
 }
 
-.tab .active {
+.accordition .active {
   background-color: lightblue;
 }
-.tab .tab-item {
+.accordition .accordition-item {
   cursor: pointer;
   border: 1px solid rgb(176, 175, 175);
   border-radius: 4px;
 }
 
-.tab .tab-title {
+.accordition .accordition-title {
   padding: 10px 40px;
   font-size: 24px;
   font-weight: 500;
 }
-.tab .tab-content {
+.accordition .accordition-content {
   font-size: 16px;
   padding: 10px 20px;
 }
-.tab .d-none {
+.accordition .d-none {
   display: none;
 }
